@@ -14,4 +14,5 @@ dependencies {
 
     compile 'javax.persistence:persistence-api:1.0b'
     compile 'javax.ejb:javax.ejb-api:3.2-b01'
+    compile 'javax.faces:javax.faces-api:2.3-edr1'
 }
