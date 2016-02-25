@@ -12,6 +12,7 @@ public class UserRoleEntity {
     private String roleName;
 
     @Version
+    @Column(name = "OPTLOCKVERSION")
     private int optLockVersion;
 
     @Id
@@ -34,6 +35,14 @@ public class UserRoleEntity {
         this.roleName = roleName;
     }
 
+    public int getOptLockVersion() {
+        return optLockVersion;
+    }
+
+    public void setOptLockVersion(int optLockVersion) {
+        this.optLockVersion = optLockVersion;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -41,16 +50,12 @@ public class UserRoleEntity {
 
         UserRoleEntity that = (UserRoleEntity) o;
 
-        if (id != that.id) return false;
-        if (roleName != null ? !roleName.equals(that.roleName) : that.roleName != null) return false;
+        return roleName.equals(that.roleName);
 
-        return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (roleName != null ? roleName.hashCode() : 0);
-        return result;
+        return roleName.hashCode();
     }
 }

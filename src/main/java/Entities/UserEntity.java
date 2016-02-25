@@ -14,6 +14,7 @@ public class UserEntity {
     private String email;
 
     @Version
+    @Column(name = "OPTLOCKVERSION")
     private int optLockVersion;
 
     @ManyToMany
@@ -43,6 +44,14 @@ public class UserEntity {
         this.email = email;
     }
 
+    public int getOptLockVersion() {
+        return optLockVersion;
+    }
+
+    public void setOptLockVersion(int optLockVersion) {
+        this.optLockVersion = optLockVersion;
+    }
+
     public List<UserRoleEntity> getRoles() {
         return roles;
     }
@@ -66,16 +75,12 @@ public class UserEntity {
 
         UserEntity that = (UserEntity) o;
 
-        if (id != that.id) return false;
-        if (email != null ? !email.equals(that.email) : that.email != null) return false;
+        return email.equals(that.email);
 
-        return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        return result;
+        return email.hashCode();
     }
 }
