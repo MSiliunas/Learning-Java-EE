@@ -5,12 +5,13 @@
         <class>Entities.PostEntity</class>
         <class>Entities.UserEntity</class>
         <class>Entities.UserRoleEntity</class>
+        <class>Entities.UserUserRoleEntity</class>
         <properties>
             <property name="openjpa.ConnectionURL"
-                      value="jdbc:derby:/Users/msiliunas/prv/uni/psk/psk-atsk/db/data;create=true"/>
+                      value="jdbc:derby:/Users/msiliunas/prv/uni/psk/psk-atsk/db/data"/>
             <property name="openjpa.ConnectionDriverName" value="org.apache.derby.jdbc.EmbeddedDriver"/>
-            <property name="openjpa.ConnectionUserName"/>
-            <property name="openjpa.ConnectionPassword"/>
+            <property name="openjpa.ConnectionUserName" value="APP"/>
+            <property name="openjpa.ConnectionPassword" value="APP"/>
         </properties>
     </persistence-unit>
 </persistence>

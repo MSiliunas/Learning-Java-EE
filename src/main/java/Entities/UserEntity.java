@@ -10,22 +10,26 @@ import java.util.List;
 @Entity
 @Table(name = "USER", schema = "APP", catalog = "")
 public class UserEntity {
+
+    @Id
+    @Column(name = "ID", nullable = false)
     private int id;
+
+    @Basic
+    @Column(name = "EMAIL", nullable = false, length = 255)
     private String email;
 
     @Version
     @Column(name = "OPTLOCKVERSION")
     private int optLockVersion;
 
-    @ManyToMany
+    @ManyToMany(targetEntity = UserRoleEntity.class)
     @JoinTable(name = "USER_USER_ROLE")
-    private List<UserRoleEntity> roles = new ArrayList<>();
+    private List<UserRoleEntity> roles;
 
-    @OneToMany(mappedBy = "user")
-    private List<PostEntity> posts = new ArrayList<>();
+    @OneToMany(targetEntity = PostEntity.class, mappedBy = "user", fetch = FetchType.EAGER)
+    private List<PostEntity> posts;
 
-    @Id
-    @Column(name = "ID", nullable = false)
     public int getId() {
         return id;
     }
@@ -34,8 +38,6 @@ public class UserEntity {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "EMAIL", nullable = false, length = 255)
     public String getEmail() {
         return email;
     }

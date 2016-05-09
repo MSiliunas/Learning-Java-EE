@@ -8,22 +8,38 @@ import javax.persistence.*;
 @Entity
 @Table(name = "POST", schema = "APP", catalog = "")
 public class PostEntity {
-    private int id;
-    private String slug;
-
-    @Version
-    @Column(name = "OPTLOCKVERSION")
-    private int optLockVersion;
-
-    @ManyToOne
-    @Column(name = "USER_ID", nullable = false)
-    private UserEntity user;
-
-    private String title;
-    private String content;
 
     @Id
     @Column(name = "ID", nullable = false)
+    private int id;
+
+    @Basic
+    @Column(name = "SLUG", nullable = false, length = 64)
+    private String slug;
+
+    @Version
+    @Column(name = "OPTLOCKVERSION", insertable = false, updatable = false)
+    private int optLockVersion;
+
+    @ManyToOne(targetEntity = UserEntity.class, fetch = FetchType.EAGER)
+    private UserEntity user;
+
+    @Basic
+    @Column(name = "TITLE", nullable = true, length = 64)
+    private String title;
+
+    @Basic
+    @Column(name = "CONTENT", nullable = true, length = 32700)
+    private String content;
+
+    @Basic
+    @Column(name = "USER_ID", nullable = false)
+    private int userId;
+
+    @Basic
+    @Column(name = "OPTLOCKVERSION", nullable = true)
+    private Integer optlockversion;
+
     public int getId() {
         return id;
     }
@@ -32,8 +48,6 @@ public class PostEntity {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "SLUG", nullable = false, length = 64)
     public String getSlug() {
         return slug;
     }
@@ -42,8 +56,6 @@ public class PostEntity {
         this.slug = slug;
     }
 
-    @Basic
-    @Column(name = "TITLE", nullable = true, length = 64)
     public String getTitle() {
         return title;
     }
@@ -52,8 +64,6 @@ public class PostEntity {
         this.title = title;
     }
 
-    @Basic
-    @Column(name = "CONTENT", nullable = true, length = 32700)
     public String getContent() {
         return content;
     }
@@ -92,5 +102,21 @@ public class PostEntity {
     @Override
     public int hashCode() {
         return slug.hashCode();
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public Integer getOptlockversion() {
+        return optlockversion;
+    }
+
+    public void setOptlockversion(Integer optlockversion) {
+        this.optlockversion = optlockversion;
     }
 }

@@ -14,6 +14,7 @@ public class UserRoleEntity {
     @Version
     @Column(name = "OPTLOCKVERSION")
     private int optLockVersion;
+    private Integer optlockversion;
 
     @Id
     @Column(name = "ID", nullable = false)
@@ -57,5 +58,15 @@ public class UserRoleEntity {
     @Override
     public int hashCode() {
         return roleName.hashCode();
+    }
+
+    @Basic
+    @Column(name = "OPTLOCKVERSION", nullable = true)
+    public Integer getOptlockversion() {
+        return optlockversion;
+    }
+
+    public void setOptlockversion(Integer optlockversion) {
+        this.optlockversion = optlockversion;
     }
 }

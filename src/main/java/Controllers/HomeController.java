@@ -1,7 +1,10 @@
 package Controllers;
 
 
+import Handlers.RoleHandlerBean;
+
 import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
@@ -11,8 +14,12 @@ import javax.persistence.PersistenceContext;
 import java.io.Serializable;
 
 @RequestScoped
-@ManagedBean
+@Named
+@Stateful
 public class HomeController implements Serializable {
+
+    @Inject
+    RoleHandlerBean roleHandlerBean;
 
     private String testVar;
 
@@ -25,7 +32,7 @@ public class HomeController implements Serializable {
     }
 
     public String helloWorld() {
-        return "Hello! " ;
+        return "Hello! " + roleHandlerBean.testMe();
     }
 
 }
