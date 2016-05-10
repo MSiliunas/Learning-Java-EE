@@ -1,17 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
 
-    <persistence-unit name="NewPersistenceUnit">
-        <class>Entities.PostEntity</class>
-        <class>Entities.UserEntity</class>
-        <class>Entities.UserRoleEntity</class>
-        <class>Entities.UserUserRoleEntity</class>
+    <persistence-unit name="MyPersistenceUnit" transaction-type="JTA">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <properties>
-            <property name="openjpa.ConnectionURL"
-                      value="jdbc:derby:/Users/msiliunas/prv/uni/psk/psk-atsk/db/data"/>
-            <property name="openjpa.ConnectionDriverName" value="org.apache.derby.jdbc.EmbeddedDriver"/>
-            <property name="openjpa.ConnectionUserName" value="APP"/>
-            <property name="openjpa.ConnectionPassword" value="APP"/>
+            <property name="hibernate.connection.username" value="APP"/>
+            <property name="hibernate.connection.password" value="APP"/>
+            <property name="hibernate.connection.driver_class" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+            <property name="hibernate.connection.url" value="jdbc:derby:/Users/msiliunas/prv/uni/psk/psk-atsk/db/data;create=true"/>
+            <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+            <property name="hibernate.show_sql" value="true"/>
         </properties>
     </persistence-unit>
+
+    <!--<persistence-unit name="MyPersistenceUnit" transaction-type="JTA">-->
+        <!--<provider>org.hibernate.ejb.HibernatePersistence</provider>-->
+        <!--<properties>-->
+            <!--<property name="hibernate.archive.autodetection" value="class" />-->
+            <!--<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />-->
+            <!--<property name="hibernate.connection.driver_class" value="org.h2.Driver" />-->
+            <!--<property name="hibernate.connection.url" value="jdbc:h2:/Users/msiliunas/prv/uni/psk/psk-atsk/db-h2" />-->
+            <!--<property name="hibernate.connection.user" value="app" />-->
+            <!--<property name="hibernate.connection.password" value="app" />-->
+            <!--<property name="hibernate.show_sql" value="true"/>-->
+            <!--<property name="hibernate.flushMode" value="FLUSH_AUTO" />-->
+            <!--<property name="hibernate.hbm2ddl.auto" value="update" />-->
+        <!--</properties>-->
+    <!--</persistence-unit>-->
+
 </persistence>

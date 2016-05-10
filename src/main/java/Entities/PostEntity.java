@@ -6,12 +6,13 @@ import javax.persistence.*;
  * Created by msiliunas on 25/02/16.
  */
 @Entity
-@Table(name = "POST", schema = "APP", catalog = "")
+@Table(name = "POST")
 public class PostEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
-    private int id;
+    public int id;
 
     @Basic
     @Column(name = "SLUG", nullable = false, length = 64)

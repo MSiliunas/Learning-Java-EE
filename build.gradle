@@ -18,5 +18,10 @@ dependencies {
     compile 'com.sun.faces:jsf-api:2.2.8'
     compile 'com.sun.faces:jsf-impl:2.2.8'
     compile 'javax.servlet:jstl:1.2'
-    compile 'org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.0.Final'
+    compile 'org.apache.derby:derby:10.12.1.1'
+    compile group: 'org.hibernate', name: 'hibernate-core', version: '4.3.6.Final'
+    compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: '4.3.6.Final'
+
+    runtime group: 'org.hibernate', name: 'hibernate-core', version: '4.3.6.Final'
+    runtime group: 'org.hibernate', name: 'hibernate-entitymanager', version: '4.3.6.Final'
 }

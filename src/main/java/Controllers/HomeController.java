@@ -3,14 +3,14 @@ package Controllers;
 
 import Handlers.RoleHandlerBean;
 
+import javax.annotation.Resource;
+import javax.ejb.EJB;
 import javax.ejb.Stateful;
-import javax.ejb.Stateless;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.bean.ManagedBean;
-import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.TransactionSynchronizationRegistry;
 import java.io.Serializable;
 
 @RequestScoped
@@ -18,17 +18,19 @@ import java.io.Serializable;
 @Stateful
 public class HomeController implements Serializable {
 
-    @Inject
+    @EJB
     RoleHandlerBean roleHandlerBean;
 
-    private String testVar;
+    @Resource
+    private TransactionSynchronizationRegistry tx;
 
-    public String getTestVar() {
-        return testVar;
-    }
+    @PersistenceContext
+    EntityManager em;
 
-    public void setTestVar(String testVar) {
-        this.testVar = testVar;
+    private void createRole(String roleName) {
+        em.isOpen();
+        roleHandlerBean.createNewRole(roleName);
+        em.flush();
     }
 
     public String helloWorld() {

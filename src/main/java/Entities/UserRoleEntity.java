@@ -2,22 +2,30 @@ package Entities;
 
 import javax.persistence.*;
 
-/**
- * Created by msiliunas on 25/02/16.
- */
 @Entity
-@Table(name = "USER_ROLE", schema = "APP", catalog = "")
+@Table(name = "USER_ROLE")
 public class UserRoleEntity {
-    private int id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID", nullable = false)
+    public int id;
+
+    @Basic
+    @Column(name = "ROLE_NAME", nullable = false, length = 64)
     private String roleName;
 
     @Version
     @Column(name = "OPTLOCKVERSION")
     private int optLockVersion;
-    private Integer optlockversion;
 
-    @Id
-    @Column(name = "ID", nullable = false)
+    public UserRoleEntity() {
+    }
+
+    public UserRoleEntity(String roleName) {
+        this.roleName = roleName;
+    }
+
     public int getId() {
         return id;
     }
@@ -26,8 +34,6 @@ public class UserRoleEntity {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "ROLE_NAME", nullable = false, length = 64)
     public String getRoleName() {
         return roleName;
     }
@@ -60,13 +66,8 @@ public class UserRoleEntity {
         return roleName.hashCode();
     }
 
-    @Basic
-    @Column(name = "OPTLOCKVERSION", nullable = true)
-    public Integer getOptlockversion() {
-        return optlockversion;
-    }
-
-    public void setOptlockversion(Integer optlockversion) {
-        this.optlockversion = optlockversion;
+    @Override
+    public String toString() {
+        return getRoleName();
     }
 }

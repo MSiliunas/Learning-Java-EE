@@ -8,12 +8,13 @@ import java.util.List;
  * Created by msiliunas on 25/02/16.
  */
 @Entity
-@Table(name = "USER", schema = "APP", catalog = "")
+@Table(name = "USER")
 public class UserEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
-    private int id;
+    public int id;
 
     @Basic
     @Column(name = "EMAIL", nullable = false, length = 255)

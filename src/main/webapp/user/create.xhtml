@@ -5,8 +5,14 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:body>
-    <h2>#{homeController.helloWorld()}</h2>
-    <h:link value="Go to User Role CRUD" outcome="/userRole.xhtml"/>
-</h:body>
+<f:view>
+    <h:outputLabel value="Hello, world"/>
+
+    <h:form id="createUserForm">
+        <label for="email">Name:</label>
+        <h:inputText id="email" value="#{userController.newUserEmail}"/>
+        <h:commandButton value="Register new user" action="#{userController.createAndPersistUser()}" />
+        <h:messages />
+    </h:form>
+</f:view>
 </html>
