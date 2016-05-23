@@ -4,30 +4,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
 <f:view>
     <h:link value="Go back to Index" outcome="/index.xhtml"/>
     <br/>
-    <h:link value="Create new user" outcome="/user/create.xhtml"/>
+    <h:link value="Create Post" outcome="/post/create.xhtml"/>
     <br/>
-    <h:messages/>
-    <br/>
-    <h:dataTable value="#{userController.allUsers}" var="user">
+
+    <h:dataTable value="#{postController.allPosts}" var="post">
         <h:column>
             <f:facet name="header">ID</f:facet>
-            #{user.id}
+            #{post.id}
         </h:column>
         <h:column>
-            <f:facet name="header">Email</f:facet>
-            #{user.email}
+            <f:facet name="header">Author</f:facet>
+            #{post.user.email}
         </h:column>
         <h:column>
-            <f:facet name="header">Post count</f:facet>
-            #{empty user.posts ? '0' : user.posts.size()}
+            <f:facet name="header">Title</f:facet>
+            #{post.title}
         </h:column>
         <h:column>
-            <f:facet name="header">Roles</f:facet>
-            <ui:repeat value="#{user.roles}" var="role">#{role}<br/></ui:repeat>
+            <f:facet name="header">Content</f:facet>
+            #{post.content}
         </h:column>
     </h:dataTable>
 </f:view>

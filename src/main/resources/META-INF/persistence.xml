@@ -8,7 +8,7 @@
             <property name="hibernate.connection.password" value="APP"/>
             <property name="hibernate.connection.driver_class" value="org.apache.derby.jdbc.EmbeddedDriver"/>
             <property name="hibernate.connection.url" value="jdbc:derby:/Users/msiliunas/prv/uni/psk/psk-atsk/db/data;create=true"/>
-            <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />
             <property name="hibernate.show_sql" value="true"/>
         </properties>
     </persistence-unit>

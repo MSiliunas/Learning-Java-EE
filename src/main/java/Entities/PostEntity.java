@@ -2,9 +2,6 @@ package Entities;
 
 import javax.persistence.*;
 
-/**
- * Created by msiliunas on 25/02/16.
- */
 @Entity
 @Table(name = "POST")
 public class PostEntity {
@@ -19,7 +16,7 @@ public class PostEntity {
     private String slug;
 
     @Version
-    @Column(name = "OPTLOCKVERSION", insertable = false, updatable = false)
+    @Column(name = "OPTLOCKVERSION")
     private int optLockVersion;
 
     @ManyToOne(targetEntity = UserEntity.class, fetch = FetchType.EAGER)
@@ -32,14 +29,6 @@ public class PostEntity {
     @Basic
     @Column(name = "CONTENT", nullable = true, length = 32700)
     private String content;
-
-    @Basic
-    @Column(name = "USER_ID", nullable = false)
-    private int userId;
-
-    @Basic
-    @Column(name = "OPTLOCKVERSION", nullable = true)
-    private Integer optlockversion;
 
     public int getId() {
         return id;
@@ -105,19 +94,4 @@ public class PostEntity {
         return slug.hashCode();
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public Integer getOptlockversion() {
-        return optlockversion;
-    }
-
-    public void setOptlockversion(Integer optlockversion) {
-        this.optlockversion = optlockversion;
-    }
 }

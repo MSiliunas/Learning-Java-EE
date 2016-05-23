@@ -9,8 +9,10 @@
     <h:outputLabel value="Hello, world"/>
 
     <h:form id="createUserForm">
-        <label for="email">Name:</label>
-        <h:inputText id="email" value="#{userController.newUserEmail}"/>
+        <label for="email">Email:</label>
+        <h:inputText id="email" value="#{userController.newUserEmail}"/><br/>
+        <label for="roles">Roles:</label>
+        <h:inputText id="roles" value="#{userController.newUserRoles}" /><br/>
         <h:commandButton value="Register new user" action="#{userController.createAndPersistUser()}" />
         <h:messages />
     </h:form>

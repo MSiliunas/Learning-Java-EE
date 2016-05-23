@@ -24,7 +24,7 @@ public class UserEntity {
     @Column(name = "OPTLOCKVERSION")
     private int optLockVersion;
 
-    @ManyToMany(targetEntity = UserRoleEntity.class)
+    @ManyToMany(targetEntity = UserRoleEntity.class, fetch = FetchType.EAGER)
     @JoinTable(name = "USER_USER_ROLE")
     private List<UserRoleEntity> roles;
 

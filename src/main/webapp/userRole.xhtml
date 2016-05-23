@@ -17,6 +17,7 @@
         <h:commandButton type="submit" value="Register new doctor" action="#{userRoleController.createUserRole()}" />
         <br/>
     </h:form>
+    <h:messages/>
     <h:dataTable value="#{userRoleController.allUserRoles}" var="role">
         <h:column>
             <f:facet name="header">ID</f:facet>
