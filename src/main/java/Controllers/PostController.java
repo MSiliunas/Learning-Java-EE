@@ -15,6 +15,7 @@ import javax.inject.Named;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Named
@@ -109,6 +110,8 @@ public class PostController implements Serializable {
     public String save() {
         try {
             em.joinTransaction();
+            currentUser.setLastPost(new Date());
+            em.persist(currentUser);
             em.flush();
             conversation.end();
         } catch (OptimisticLockException e) {

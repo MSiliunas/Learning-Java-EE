@@ -2,6 +2,7 @@ package Entities;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -30,6 +31,8 @@ public class UserEntity {
 
     @OneToMany(targetEntity = PostEntity.class, mappedBy = "user", fetch = FetchType.EAGER)
     private List<PostEntity> posts;
+
+    private Date lastPost;
 
     public int getId() {
         return id;
@@ -69,6 +72,14 @@ public class UserEntity {
 
     public void setPosts(List<PostEntity> posts) {
         this.posts = posts;
+    }
+
+    public Date getLastPost() {
+        return lastPost;
+    }
+
+    public void setLastPost(Date lastPost) {
+        this.lastPost = lastPost;
     }
 
     @Override

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
-@TransactionAttribute(value = TransactionAttributeType.REQUIRES_NEW)
+//@TransactionAttribute(value = TransactionAttributeType.REQUIRES_NEW)
 public class UserService implements Serializable {
 
     @Inject
